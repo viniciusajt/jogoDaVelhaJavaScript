@@ -3,41 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <title>Jogo da Velha</title>
-    <style>
-        body{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            background-color: #e0d3b8;
-            color: #706f6b;
-            font-family: "Roboto", sans-serif;
-            font-weight: 400;
-            font-style: normal;
-            font-size: 35px;
-        }
-        #game{
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-        }
-        .buttonGame{
-            color: white;
-            border: solid #706f6b 5px;
-            background-color: #a69a81;
-            margin: 5px;
-            height: 150px;
-            width: 150px;
-            border-radius: 5px;
-            font-family: "Roboto", sans-serif;
-            font-weight: 400;
-            font-style: normal;
-            font-size: 75px;
-        }
-    </style>
 </head>
 <body>
     <h2>Jogo da Velha</h2>
@@ -45,127 +15,6 @@
 
     </div>
     <h2 id="turnId">Vez de X</h2>
-    <script>
-        let turno = 0;
-        let win = 0;
-        let velha = false;
-        let jogadas =[
-            '', '', '',
-            '', '', '',
-            '', '', ''
-        ];
-        const game = document.querySelector("#game");
-        const turnId = document.querySelector("#turnId");
-
-        function playerClick(i){
-            if(jogadas[i] == '' && win == 0 && velha == false){
-                if(turno==0 || turno%2==0){
-                    jogadas[i] = 'X';
-                }
-                if(turno!=0 && turno%2!=0){
-                    jogadas[i] = 'O';
-                }
-                turno++;
-                switchTurnId();
-                createButtons();
-                winCondition();
-            }
-        }
-        function createButtons(){
-            game.innerHTML = '';
-            for (let i = 0; i < 9; i++){
-                game.innerHTML +=`<button class="buttonGame" onclick="playerClick(${i})">${jogadas[i]}</button>`;
-        }
-    }
-        function switchTurnId(){
-            if(turno==0 || turno%2==0){
-                turnId.innerHTML = 'Vez de X';   
-                }
-            if(turno!=0 && turno%2!=0){
-                turnId.innerHTML = 'Vez de O';    
-                }
-        }
-        function winCondition(){
-            if(jogadas[0] == 'X' && jogadas[1] == 'X' && jogadas[2] == 'X'){
-                turnId.innerHTML = 'Vitória de X'
-                win = 1;
-            }
-            else if(jogadas[3] == 'X' && jogadas[4] == 'X' && jogadas[5] == 'X'){
-                turnId.innerHTML = 'Vitória de X'
-                win = 1;
-            }
-            else if(jogadas[6] == 'X' && jogadas[7] == 'X' && jogadas[8] == 'X'){
-                turnId.innerHTML = 'Vitória de X'
-                win = 1;
-            }
-            else if(jogadas[0] == 'X' && jogadas[3] == 'X' && jogadas[6] == 'X'){
-                turnId.innerHTML = 'Vitória de X'
-                win = 1;
-            }
-            else if(jogadas[1] == 'X' && jogadas[4] == 'X' && jogadas[7] == 'X'){
-                turnId.innerHTML = 'Vitória de X'
-                win = 1;
-            }
-            else if(jogadas[2] == 'X' && jogadas[5] == 'X' && jogadas[8] == 'X'){
-                turnId.innerHTML = 'Vitória de X'
-                win = 1;
-            }
-            else if(jogadas[0] == 'X' && jogadas[4] == 'X' && jogadas[8] == 'X'){
-                turnId.innerHTML = 'Vitória de X'
-                win = 1;
-            }
-            else if(jogadas[2] == 'X' && jogadas[4] == 'X' && jogadas[6] == 'X'){
-                turnId.innerHTML = 'Vitória de X'
-                win = 1;
-            }
-
-            /*-------------------------------------------------*/
-
-            else if(jogadas[0] == 'O' && jogadas[1] == 'O' && jogadas[2] == 'O'){
-                turnId.innerHTML = 'Vitória de O'
-                win = 1;
-            }
-            else if(jogadas[3] == 'O' && jogadas[4] == 'O' && jogadas[5] == 'O'){
-                turnId.innerHTML = 'Vitória de O'
-                win = 1;
-            }
-            else if(jogadas[6] == 'O' && jogadas[7] == 'O' && jogadas[8] == 'O'){
-                turnId.innerHTML = 'Vitória de O'
-                win = 1;
-            }
-            else if(jogadas[0] == 'O' && jogadas[3] == 'O' && jogadas[6] == 'O'){
-                turnId.innerHTML = 'Vitória de O'
-                win = 1;
-            }
-            else if(jogadas[1] == 'O' && jogadas[4] == 'O' && jogadas[7] == 'O'){
-                turnId.innerHTML = 'Vitória de O'
-                win = 1;
-            }
-            else if(jogadas[2] == 'O' && jogadas[5] == 'O' && jogadas[8] == 'O'){
-                turnId.innerHTML = 'Vitória de O'
-                win = 1;
-            }
-            else if(jogadas[0] == 'O' && jogadas[4] == 'O' && jogadas[8] == 'O'){
-                turnId.innerHTML = 'Vitória de O'
-                win = 1;
-            }
-            else if(jogadas[2] == 'O' && jogadas[4] == 'O' && jogadas[6] == 'O'){
-                turnId.innerHTML = 'Vitória de O'
-                win = 1;
-            }
-            else{
-                velha = true;
-                for( let i = 0; i < 9; i++){
-                    if(jogadas[i] == ''){
-                        velha = false;
-                    }
-                }
-                if(velha == true){
-                    turnId.innerHTML = 'Velha!';
-                } 
-            }
-        }
-    createButtons();
-    </script>
+    <script src="js/script.js"> </script>
 </body>
 </html>
