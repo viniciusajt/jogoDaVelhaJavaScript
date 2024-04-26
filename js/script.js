@@ -23,12 +23,14 @@ let turno = 0;
                 winCondition();
             }
         }
+        
         function createButtons(){
             game.innerHTML = '';
             for (let i = 0; i < 9; i++){
                 game.innerHTML +=`<button class="buttonGame" onclick="playerClick(${i})">${jogadas[i]}</button>`;
         }
-    }
+        }
+
         function switchTurnId(){
             if(turno==0 || turno%2==0){
                 turnId.innerHTML = 'Vez de X';   
@@ -37,38 +39,47 @@ let turno = 0;
                 turnId.innerHTML = 'Vez de O';    
                 }
         }
+
         function winCondition(){
             if(jogadas[0] == 'X' && jogadas[1] == 'X' && jogadas[2] == 'X'){
                 turnId.innerHTML = 'Vitória de X'
                 win = 1;
+                createResetButton();
             }
             else if(jogadas[3] == 'X' && jogadas[4] == 'X' && jogadas[5] == 'X'){
                 turnId.innerHTML = 'Vitória de X'
                 win = 1;
+                createResetButton();
             }
             else if(jogadas[6] == 'X' && jogadas[7] == 'X' && jogadas[8] == 'X'){
                 turnId.innerHTML = 'Vitória de X'
                 win = 1;
+                createResetButton();
             }
             else if(jogadas[0] == 'X' && jogadas[3] == 'X' && jogadas[6] == 'X'){
                 turnId.innerHTML = 'Vitória de X'
                 win = 1;
+                createResetButton();
             }
             else if(jogadas[1] == 'X' && jogadas[4] == 'X' && jogadas[7] == 'X'){
                 turnId.innerHTML = 'Vitória de X'
                 win = 1;
+                createResetButton();
             }
             else if(jogadas[2] == 'X' && jogadas[5] == 'X' && jogadas[8] == 'X'){
                 turnId.innerHTML = 'Vitória de X'
                 win = 1;
+                createResetButton();
             }
             else if(jogadas[0] == 'X' && jogadas[4] == 'X' && jogadas[8] == 'X'){
                 turnId.innerHTML = 'Vitória de X'
                 win = 1;
+                createResetButton();
             }
             else if(jogadas[2] == 'X' && jogadas[4] == 'X' && jogadas[6] == 'X'){
                 turnId.innerHTML = 'Vitória de X'
                 win = 1;
+                createResetButton();
             }
 
             /*-------------------------------------------------*/
@@ -76,34 +87,42 @@ let turno = 0;
             else if(jogadas[0] == 'O' && jogadas[1] == 'O' && jogadas[2] == 'O'){
                 turnId.innerHTML = 'Vitória de O'
                 win = 1;
+                createResetButton();
             }
             else if(jogadas[3] == 'O' && jogadas[4] == 'O' && jogadas[5] == 'O'){
                 turnId.innerHTML = 'Vitória de O'
                 win = 1;
+                createResetButton();
             }
             else if(jogadas[6] == 'O' && jogadas[7] == 'O' && jogadas[8] == 'O'){
                 turnId.innerHTML = 'Vitória de O'
                 win = 1;
+                createResetButton();
             }
             else if(jogadas[0] == 'O' && jogadas[3] == 'O' && jogadas[6] == 'O'){
                 turnId.innerHTML = 'Vitória de O'
                 win = 1;
+                createResetButton();
             }
             else if(jogadas[1] == 'O' && jogadas[4] == 'O' && jogadas[7] == 'O'){
                 turnId.innerHTML = 'Vitória de O'
                 win = 1;
+                createResetButton();
             }
             else if(jogadas[2] == 'O' && jogadas[5] == 'O' && jogadas[8] == 'O'){
                 turnId.innerHTML = 'Vitória de O'
                 win = 1;
+                createResetButton();
             }
             else if(jogadas[0] == 'O' && jogadas[4] == 'O' && jogadas[8] == 'O'){
                 turnId.innerHTML = 'Vitória de O'
                 win = 1;
+                createResetButton();
             }
             else if(jogadas[2] == 'O' && jogadas[4] == 'O' && jogadas[6] == 'O'){
                 turnId.innerHTML = 'Vitória de O'
                 win = 1;
+                createResetButton();
             }
             else{
                 velha = true;
@@ -114,7 +133,18 @@ let turno = 0;
                 }
                 if(velha == true){
                     turnId.innerHTML = 'Velha!';
+                    createResetButton();
                 } 
             }
+        }
+
+        function resetGame(){
+            window.location.reload();
+        }
+
+        function createResetButton(){
+            controlArea = document.querySelector("#controlArea");
+            controlArea.innerHTML = " ";
+            controlArea.innerHTML = `<button type= "button" class="resetButton" onclick="resetGame()">Reiniciar</button>`;
         }
     createButtons();
